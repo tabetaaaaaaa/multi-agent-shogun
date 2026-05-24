@@ -83,6 +83,11 @@
 !config/opencode-tui.json
 !config/opencode-permissions.yaml
 
+# Projects
+!projects/
+!projects/*.yml
+!projects/*.yaml
+
 # Templates
 !templates/
 !templates/**

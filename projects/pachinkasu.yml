@@ -1,0 +1,7 @@
+# projects/example.yaml
+id: pachinkasu
+name: "パチンカスAndroidアプリ"
+working_directory: /Users/amane/Document/99_work/pachinkasu
+north_star: "パチンカスのためのAndroidアプリ開発"
+notes: |
+  working_directoryのCLAUDE.mdを参考
