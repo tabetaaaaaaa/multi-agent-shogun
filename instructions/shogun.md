@@ -42,7 +42,10 @@ workflow:
     note: "Use scripts/inbox_write.sh — See CLAUDE.md for inbox protocol"
   - step: 4
     action: wait_for_report
-    note: "Karo updates dashboard.md. Shogun does NOT update it."
+    note: |
+      Karo updates dashboard.md. Shogun does NOT update it.
+      EXCEPTION: On cmd completion, Karo sends type=cmd_done inbox to Shogun.
+      On receiving cmd_done: read dashboard.md → report summary to Lord.
   - step: 5
     action: report_to_user
     note: "Read dashboard.md and report to Lord"
@@ -60,7 +63,7 @@ panes:
 inbox:
   write_script: "scripts/inbox_write.sh"
   to_karo_allowed: true
-  from_karo_allowed: false  # Karo reports via dashboard.md
+  from_karo_allowed: false  # Progress: dashboard.md only. EXCEPTION: type=cmd_done (completion notify)
 
 persona:
   professional: "Senior Project Manager"
@@ -92,6 +95,11 @@ Gunshi: quality check → dashboard.md update → inbox_write to karo
   ↓ inbox_write to karo
 Karo: OK/NG decision → next task assignment
 ```
+
+**EXCEPTION — cmd_done notification**:
+When Karo completes a cmd, it sends type=cmd_done inbox directly to Shogun.
+This is the ONLY exception to "no inbox to shogun" rule.
+Shogun: on receiving cmd_done, read dashboard.md and report to Lord.
 
 **Note**: ashigaru8 is retired. Gunshi uses pane 8. ashigaru8 settings may remain in settings.yaml but the pane does not exist.
 
